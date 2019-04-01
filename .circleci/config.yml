@@ -2,6 +2,9 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/python
+      - image: circleci/node
     steps:
-      - run: echo 1111
+      - checkout
+      - run: python3 --version
+      - run: sudo apt install python3-pip
+      - run: pip3 install awscli --upgrade --user
