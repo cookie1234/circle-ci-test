@@ -9,7 +9,6 @@ jobs:
     executor: build
     steps:
       - checkout
-      - run: cd repo/circle-ci-test
       - run: npm run publish
       - save_cache:
           key: v1-repo-{{.Environment.CIRCLE_SHA1}}

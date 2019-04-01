@@ -7,10 +7,6 @@ jobs:
     steps:
     - checkout
     - run:
-        command: ls -a
-    - run:
-        command: cd repo/circle-ci-test
-    - run:
         command: npm run publish
     - save_cache:
         key: v1-repo-{{.Environment.CIRCLE_SHA1}}
@@ -34,8 +30,6 @@ workflows:
 #     executor: build
 #     steps:
 #       - checkout
-#       - run: ls -a
-#       - run: cd repo/circle-ci-test
 #       - run: npm run publish
 #       - save_cache:
 #           key: v1-repo-{{.Environment.CIRCLE_SHA1}}
