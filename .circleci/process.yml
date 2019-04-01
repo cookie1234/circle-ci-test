@@ -1,0 +1,22 @@
+version: 2
+jobs:
+  build:
+    docker:
+    - image: circleci/python
+    steps:
+    - run:
+        command: echo 1111
+workflows:
+  version: 2
+  workflow:
+    jobs:
+    - build
+
+# Original config.yml file:
+# version: 2.1
+# jobs:
+#   build:
+#     docker:
+#       - image: circleci/python
+#     steps:
+#       - run: echo 1111
