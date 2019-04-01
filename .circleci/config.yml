@@ -1,8 +1,38 @@
 version: 2.1
-jobs:
+executors:
   build:
     docker:
       - image: circleci/node
+    working_directory: ~/repo
+jobs:
+  build:
+    executor: build
     steps:
       - checkout
+      - save_cache:
+          key: v1-repo-{{.Environment.CIRCLE_SHA1}}
+          paths:
+            - ~/repo
   
+
+
+#version: 2.1
+#jobs:
+#  build:
+#    docker:
+#      - image: circleci/node
+#    steps:
+#      - checkout
+#      - run: cd ls-Open-Api-Docs
+#      - run: npm run publish
+#      - run: # distの下をキャッシュする
+
+
+
+#  deploy:
+#    docker:
+#      - image: circleci/python
+#    steps:
+#      - run: pip3 install awscli --upgrade --user
+#      - run: #ロードする
+#      - run: #アップロードする
