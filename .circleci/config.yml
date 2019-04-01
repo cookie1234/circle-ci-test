@@ -5,6 +5,4 @@ jobs:
       - image: circleci/node
     steps:
       - checkout
-      - run: python3 --version
-      - run: sudo apt install python3-pip
-      - run: pip3 install awscli --upgrade --user
+  
