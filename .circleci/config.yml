@@ -30,9 +30,12 @@ workflows:
   release:
     jobs:
       - build
+      - prod-approval:
+          type: approval
       - deploy:
           requires:
             - build
+            - prod-approval
 
 
 #version: 2.1
