@@ -4,6 +4,10 @@ executors:
     docker:
       - image: circleci/node
     working_directory: ~/repo
+  deploy:
+    docker:
+      - image: circleci/python
+    working_directory: ~/repo
 jobs:
   build:
     executor: build
@@ -14,7 +18,20 @@ jobs:
           key: v1-repo-{{.Environment.CIRCLE_SHA1}}
           paths:
             - ~/repo
-  
+  deploy:
+    executor: deploy
+    steps:
+      - run: pip3 install awscli --upgrade --user
+      - restore_cache:
+          key: v1-repo-{{.Environment.CIRCLE_SHA1}}
+workflows:
+  version: 2
+  release:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
 
 
 #version: 2.1
