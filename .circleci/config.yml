@@ -22,7 +22,7 @@ jobs:
   deploy:
     executor: deploy
     steps:
-      - run: export PATH=$PATH:~/.local/bin
+      - run: echo 'export PATH=$PATH:~/.local/bin' >> $BASH_ENV
       - run: pip3 install awscli --upgrade --user
       - restore_cache:
           key: v1-repo-{{.Environment.CIRCLE_SHA1}}
