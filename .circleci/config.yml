@@ -18,6 +18,7 @@ jobs:
           key: v1-repo-{{.Environment.CIRCLE_SHA1}}
           paths:
             - ~/repo
+      - run: echo $CIRCLE_BRANCH
   deploy:
     executor: deploy
     steps:
@@ -36,7 +37,6 @@ workflows:
           requires:
             - build
             - prod-approval
-
 
 #version: 2.1
 #jobs:
