@@ -24,6 +24,7 @@ jobs:
       - run: pip3 install awscli --upgrade --user
       - restore_cache:
           key: v1-repo-{{.Environment.CIRCLE_SHA1}}
+      - run: ls -a
 workflows:
   version: 2
   release:
