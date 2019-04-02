@@ -25,7 +25,8 @@ jobs:
       - run: pip3 install awscli --upgrade --user
       - restore_cache:
           key: v1-repo-{{.Environment.CIRCLE_SHA1}}
-      - run: aws s3 sync ~/repo s3://${CIRCLE_BRANCH}/ --exact-timestamps --delete
+      - run: echo ${PATH}
+      #- run: aws s3 sync ~/repo s3://${CIRCLE_BRANCH}/ --exact-timestamps --delete
 workflows:
   version: 2
   release:
